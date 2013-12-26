@@ -1,0 +1,34 @@
+extends layout
+
+block content
+	div.login-form
+		div.logo
+			img(src="images/logo.png")
+		form(id="login-form", method="POST", action="/login", autocomplete="off")
+			if messages != ""
+				div.error-dialog-box.show
+					| #{messages}
+			div.login-form__control
+				input(name="username", type="text", placeholder="Username")
+			div.login-form__control
+				input(name="password", type="password", placeholder="Password")
+			div.login-form__control
+				input(class="button", id="submit-button", type="submit", value="Login")
+
+		div.switch-signup
+			| or you don't have an account? 
+			span#switch-signup-link Sign up
+		div.switch-login
+			| have an account? 
+			span#switch-login-link Login
+
+		form(id="signup-form", method="POST", action="/users", autocomplete="off")
+			div.login-form__control
+				input(name="username", type="text", placeholder="Username")
+			div.login-form__control
+				input(name="fullname", type="text", placeholder="Fullname")
+			div.login-form__control
+				input(name="password", type="password", placeholder="Password")
+			div.login-form__control
+				input(class="button", id="submit-button", type="submit", value="Sign up")
+	script(src='javascripts/home.js')

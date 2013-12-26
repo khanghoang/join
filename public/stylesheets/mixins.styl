@@ -1,0 +1,21 @@
+border-radius(n)
+	-webkit-border-radius n
+	-moz-border-radius n
+	border-radius n
+
+dialog-box(w,h,bg-clr,t)
+	position: absolute
+	width: w
+	height: h
+	padding: 15px
+	background-color: bg-clr
+	border-radius(3px)
+	&:after
+		content: ""
+		position: absolute
+		top: t
+		left: -20px
+		border-top: solid 10px transparent
+		border-right: solid 10px bg-clr
+		border-bottom: solid 10px transparent
+		border-left: solid 10px transparent
