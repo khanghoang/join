@@ -2,6 +2,7 @@
 function AppModel(url) {
 	this.url = url;
 }
+
 AppModel.prototype.fetch = function(data) {
 	data = (data) ? data : null;
 
@@ -21,6 +22,7 @@ AppModel.prototype.fetch = function(data) {
 		}
 	})
 };
+
 AppModel.prototype.post = function(data) {
 	return $.ajax({
 		url: this.url,
@@ -33,7 +35,8 @@ AppModel.prototype.post = function(data) {
 function UserModel(url) {
 	AppModel.call(this, url);
 }
+
 UserModel.prototype = Object.create(AppModel.prototype);
 
-var getAllUsers = new UserModel("/api/users");
-getAllUsers.fetch();
+// var allUsers = new UserModel("/api/users");
+// allUsers.fetch();

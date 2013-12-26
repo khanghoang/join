@@ -1,11 +1,8 @@
 extends layout
 
 block content
-	ul
-		li= user._id
-		li= user.username
-		li= user.password
-		li= user.fullname
-		li
-			a(href="/logout") Logout 
-	script(src='javascripts/application.js')
+	block sidebar
+	div.user-content
+		| Show list of groups here
+	
+	script(src='/javascripts/application.js')

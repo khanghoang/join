@@ -1,8 +1,4 @@
 
-/*
- * GET users listing.
- */
-
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema,
 	bcrypt = require('bcrypt'),
@@ -70,6 +66,6 @@ exports.post = function(req, res){
 
 exports.show = function(req, res){
 	User.findOne({username: req.params.username}, function(err, user){
-		res.render('user', { user: user });
+		res.render('sidebar', { user: user });
 	});
 };

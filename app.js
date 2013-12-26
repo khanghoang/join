@@ -87,6 +87,7 @@ passport.deserializeUser(function(_id, done) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
+app.post('/users', user.post);
 app.get('/users/:username.:format?', auth, user.show);
 app.post('/login',
   passport.authenticate('local', { failureRedirect: '/',

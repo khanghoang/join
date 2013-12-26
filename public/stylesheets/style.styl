@@ -1,19 +1,24 @@
+
 @import "mixins.styl"
+
 /*------------------------------------*\
     $CONTENTS
 \*------------------------------------*/
 /**
  * CONTENTS............You’re reading it!
- * RESET...............Set our reset defaults
- * FONT-FACE...........Import brand font files
+ * SITE................Set defaults
+ * HOME................Styles for login/signup forms
+ * 401.................Unauthorized page
+ * 404.................File not found page
+ * SIDEBAR
  */
 
 /*------------------------------------*\
-    $RESET
+    $SITE
 \*------------------------------------*/
+
 body
 	margin: 0
-	// font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
 	font-family: 'Open Sans', sans-serif
 	font-size: 14px
 	font-weight: 300
@@ -22,7 +27,7 @@ body
 input
 	outline: none
 	font-family: 'Open Sans', sans-serif
-	font-size: 12px
+	font-size: 0.857142em
 
 a
 	color: #00B7FF
@@ -39,69 +44,56 @@ a
 :-ms-input-placeholder /* Internet Explorer 10+ */
 	color: #606468
 
-
 .wrapper
 	width: 100%
 
-.login-form
+/*------------------------------------*\
+    $HOME
+\*------------------------------------*/
+
+.home-wrapper
+	position: absolute
+	top: 25%
+	left: 50%
+	margin-left: -125px
 	width: 250px
-	margin: 200px auto 0
-	text-align: center
 	color: #606468
+	text-align: center
 	.logo
 		width: 100%
 		height: 105px
-	.login-form__control
+	.form__control
 		margin-top: 10px
 		input[type="text"], input[type="password"]
 			width: 230px
 			padding: 15px 10px
-			border: 0
 			color: #eee
 			background-color: #3b4148
-			// box-shadow: inset 0 5px 0 rgba(0,0,0,.05)
+			border: 0
 			border-radius: 3px
 		#submit-button
 			width: 250px
-#login-form
-	position: relative
-#signup-form
-	display: none
+	#login-form
+		position: relative
+	#signup-form
+		display: none
 
-.switch-signup
-	margin-top: 10px
-.switch-login
-	margin-top: 10px
-	display: none
-#switch-signup-link, #switch-login-link
-	color: #eee
-	cursor: pointer
-	&:hover 
-		text-decoration: underline
+	.switch-signup
+		margin-top: 10px
+	.switch-login
+		display: none
+		margin-top: 10px
+	#switch-signup-link, #switch-login-link
+		color: #eee
+		cursor: pointer
+		&:hover 
+			text-decoration: underline
 
-.error-dialog-box
-	position: absolute
-	top: 2px
-	right: -160px
-	dialog-box(110px,38px,#fff,14px)
-
-.button
-	position: relative
-	border-radius: 3px
-	border: 0
-	display: inline-block
-	padding: 15px 15px
-	// font-weight: bold
-	color: white
-	background-color: #1ead75
-	text-transform: uppercase
-	// box-shadow: 0px 5px 0px darken(#1ead75, 15%)
-
-	&:active
-		box-shadow: inset 0 3px 5px rgba(0,0,0,.5)
-		padding: 18px 15px 12px
-
-
+	.error-dialog-box
+		position: absolute
+		top: 2px
+		right: -160px
+		dialog-box(110px,38px,#fff,14px)
 
 .show
 	-webkit-animation: jelly-show 500ms
@@ -130,3 +122,66 @@ a
 		-webkit-transform: scale(1.0)
 	100%
 		-webkit-transform: scale(0.0)
+
+/*------------------------------------*\
+    $401
+\*------------------------------------*/
+
+.gandalf
+	position: absolute
+	top: 50%
+	left: 50%
+	margin-top: -75px
+	margin-left: -75px
+	width: 150px
+	color: #eee
+	.gandalf__author
+		text-align: right
+		font-size: 0.857142em
+	.gandalf__quote
+		margin: 12px 0 2px
+		text-align: center
+	.gandalf__avatar
+		margin: 0 auto
+		background-image: url('/images/gandalf_avt.jpg')
+
+/*------------------------------------*\
+    $SIDEBAR
+\*------------------------------------*/
+
+.sidebar
+	position: absolute
+	top: 0
+	bottom: 0
+	left: 0
+	background-color: gray
+	width: 200px
+
+.user-content
+	color: #eee
+	position: absolute
+	top: 0
+	right: 0
+	bottom: 0
+	left: 200px
+
+.button
+	display: inline-block
+	position: relative
+	padding: 15px 15px
+	color: white
+	text-transform: uppercase
+	background-color: #1ead75
+	border: 0
+	border-radius: 3px
+	&:active
+		padding: 18px 15px 12px
+		box-shadow: inset 0 3px 5px rgba(0,0,0,.5)
+
+.avatar
+	width: 100px
+	height: 100px
+	background-repeat: no-repeat
+	background-position: center
+	background-size: cover
+	border-radius: 50%

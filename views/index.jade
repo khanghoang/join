@@ -1,18 +1,19 @@
 extends layout
 
 block content
-	div.login-form
+	div.home-wrapper
 		div.logo
 			img(src="images/logo.png")
-		form(id="login-form", method="POST", action="/login", autocomplete="off")
+
+		form(id="login-form", class="form", method="POST", action="/login", autocomplete="off")
 			if messages != ""
 				div.error-dialog-box.show
 					| #{messages}
-			div.login-form__control
+			div.form__control
 				input(name="username", type="text", placeholder="Username")
-			div.login-form__control
+			div.form__control
 				input(name="password", type="password", placeholder="Password")
-			div.login-form__control
+			div.form__control
 				input(class="button", id="submit-button", type="submit", value="Login")
 
 		div.switch-signup
@@ -22,13 +23,14 @@ block content
 			| have an account? 
 			span#switch-login-link Login
 
-		form(id="signup-form", method="POST", action="/users", autocomplete="off")
-			div.login-form__control
+		form(id="signup-form", class="form", method="POST", action="/users", autocomplete="off")
+			div.form__control
 				input(name="username", type="text", placeholder="Username")
-			div.login-form__control
+			div.form__control
 				input(name="fullname", type="text", placeholder="Fullname")
-			div.login-form__control
+			div.form__control
 				input(name="password", type="password", placeholder="Password")
-			div.login-form__control
+			div.form__control
 				input(class="button", id="submit-button", type="submit", value="Sign up")
+
 	script(src='javascripts/home.js')

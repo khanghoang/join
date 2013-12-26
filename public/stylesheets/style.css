@@ -2,10 +2,13 @@
 \*------------------------------------*/
 /**
  * CONTENTS............You’re reading it!
- * RESET...............Set our reset defaults
- * FONT-FACE...........Import brand font files
+ * SITE................Set defaults
+ * HOME................Styles for login/signup forms
+ * 401.................Unauthorized page
+ * 404.................File not found page
+ * SIDEBAR
  */
-/*------------------------------------*     $RESET
+/*------------------------------------*     $SITE
 \*------------------------------------*/
 body {
   margin: 0;
@@ -17,7 +20,7 @@ body {
 input {
   outline: none;
   font-family: 'Open Sans', sans-serif;
-  font-size: 12px;
+  font-size: 0.857142em;
 }
 a {
   color: #00b7ff;
@@ -37,56 +40,61 @@ a {
 .wrapper {
   width: 100%;
 }
-.login-form {
+/*------------------------------------*     $HOME
+\*------------------------------------*/
+.home-wrapper {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  margin-left: -125px;
   width: 250px;
-  margin: 200px auto 0;
-  text-align: center;
   color: #606468;
+  text-align: center;
 }
-.login-form .logo {
+.home-wrapper .logo {
   width: 100%;
   height: 105px;
 }
-.login-form .login-form__control {
+.home-wrapper .form__control {
   margin-top: 10px;
 }
-.login-form .login-form__control input[type="text"],
-.login-form .login-form__control input[type="password"] {
+.home-wrapper .form__control input[type="text"],
+.home-wrapper .form__control input[type="password"] {
   width: 230px;
   padding: 15px 10px;
-  border: 0;
   color: #eee;
   background-color: #3b4148;
+  border: 0;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
-.login-form .login-form__control #submit-button {
+.home-wrapper .form__control #submit-button {
   width: 250px;
 }
-#login-form {
+.home-wrapper #login-form {
   position: relative;
 }
-#signup-form {
+.home-wrapper #signup-form {
   display: none;
 }
-.switch-signup {
+.home-wrapper .switch-signup {
   margin-top: 10px;
 }
-.switch-login {
-  margin-top: 10px;
+.home-wrapper .switch-login {
   display: none;
+  margin-top: 10px;
 }
-#switch-signup-link,
-#switch-login-link {
+.home-wrapper #switch-signup-link,
+.home-wrapper #switch-login-link {
   color: #eee;
   cursor: pointer;
 }
-#switch-signup-link:hover,
-#switch-login-link:hover {
+.home-wrapper #switch-signup-link:hover,
+.home-wrapper #switch-login-link:hover {
   text-decoration: underline;
 }
-.error-dialog-box {
+.home-wrapper .error-dialog-box {
   position: absolute;
   top: 2px;
   right: -160px;
@@ -99,7 +107,7 @@ a {
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
-.error-dialog-box:after {
+.home-wrapper .error-dialog-box:after {
   content: "";
   position: absolute;
   top: 14px;
@@ -108,22 +116,6 @@ a {
   border-right: solid 10px #fff;
   border-bottom: solid 10px transparent;
   border-left: solid 10px transparent;
-}
-.button {
-  position: relative;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  border: 0;
-  display: inline-block;
-  padding: 15px 15px;
-  color: #fff;
-  background-color: #1ead75;
-  text-transform: uppercase;
-}
-.button:active {
-  box-shadow: inset 0 3px 5px rgba(0,0,0,0.5);
-  padding: 18px 15px 12px;
 }
 .show {
   -webkit-animation: jelly-show 500ms;
@@ -162,4 +154,71 @@ a {
   100% {
     -webkit-transform: scale(0);
   }
+}
+/*------------------------------------*     $401
+\*------------------------------------*/
+.gandalf {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -75px;
+  margin-left: -75px;
+  width: 150px;
+  color: #eee;
+}
+.gandalf .gandalf__author {
+  text-align: right;
+  font-size: 0.857142em;
+}
+.gandalf .gandalf__quote {
+  margin: 12px 0 2px;
+  text-align: center;
+}
+.gandalf .gandalf__avatar {
+  margin: 0 auto;
+  background-image: url("/images/gandalf_avt.jpg");
+}
+/*------------------------------------*     $SIDEBAR
+\*------------------------------------*/
+.sidebar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #808080;
+  width: 200px;
+}
+.user-content {
+  color: #eee;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 200px;
+}
+.button {
+  display: inline-block;
+  position: relative;
+  padding: 15px 15px;
+  color: #fff;
+  text-transform: uppercase;
+  background-color: #1ead75;
+  border: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.button:active {
+  padding: 18px 15px 12px;
+  box-shadow: inset 0 3px 5px rgba(0,0,0,0.5);
+}
+.avatar {
+  width: 100px;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
 }
