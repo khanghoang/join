@@ -11,6 +11,10 @@ var groupSchema = new Schema({
 
 var Group = mongoose.model('groups', groupSchema);
 
+/*
+ * export
+ */
+
 module.exports.Model = Group;
 
 exports.post = function(req, res){
@@ -21,9 +25,11 @@ exports.post = function(req, res){
 				user._id
 			]
 		}).save(function(err, group){
+			// update current user
 			user.groups.push(group._id);
 	        user.save(function(err, user){
-				res.send(group);
+				// res.send(group);
+				res.redirect('/users/' + user.username);
 	        });
 		});
     });

@@ -1,8 +1,16 @@
 extends layout
 
 block content
-	block sidebar
+	include includes/sidebar
 	div.user-content
-		| Show list of groups here
-	
+		ul
+			each group in groups
+				li= group.group_name
+
+		form(id="new-group-form", class="form", method="POST", action="/users/#{user.username}/groups", autocomplete="off")
+			div.form__control
+				input(name="group_name", type="text", placeholder="Group name")
+			div.form__control
+				input(class="button", id="submit-button", type="submit", value="Create")
+
 	script(src='/javascripts/application.js')

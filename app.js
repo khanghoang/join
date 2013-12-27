@@ -87,10 +87,9 @@ passport.deserializeUser(function(_id, done) {
 });
 
 app.get('/', routes.index);
-// app.get('/users', user.list);
+app.get('/users', auth, user.list);
 app.get('/users/:username.:format?', auth, user.show);
 app.post('/users', user.post);
-app.post('/users/:username', user.update);
 app.post('/login',
   passport.authenticate('local', { failureRedirect: '/',
                                    failureFlash: 'Invalid username or password.' }),

@@ -15,18 +15,14 @@ var userSchema = new Schema({
 });
 
 userSchema.methods.validPassword = function(password){
-	console.log(bcrypt.compareSync(password, this.password));
 	return bcrypt.compareSync(password, this.password);
 }
 
-// userSchema.methods.comparePassword = function(candidatePassword, cb) {
-//     bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-//         if (err) return cb(err);
-//         cb(null, isMatch);
-//     });
-// };
-
 var User = mongoose.model('users', userSchema);
+
+/*
+ * export
+ */
 
 module.exports.Model = User;
 
@@ -59,7 +55,7 @@ exports.list = function(req, res){
 
 exports.post = function(req, res){
     if (req.body.password != req.body.confirm_password) {
-        res.render('index', { messages: "Sign up fail" });
+        res.render('index', { messages: "Password does not match." });
     } else {
         new User({
         	username: req.body.username,
@@ -75,17 +71,8 @@ exports.post = function(req, res){
 exports.show = function(req, res){
 	User.findOne({username: req.params.username}, function(err, user){
         group.Model.find({users: user._id}, function(err, groups){
-		  // res.render('sidebar', { user: user });
-          res.send([{user: user, groups: groups}]);
+		  res.render('user', {user: user, groups: groups});
+          // res.send([{user: user, groups: groups}]);
         });
 	});
-};
-
-exports.update = function(req, res){
-    User.findOne({username: req.params.username}, function(err, user){
-        user.fullname = req.body.fullname;
-        user.save(function(err, user){
-            res.send(user);
-        });
-    });
 };
