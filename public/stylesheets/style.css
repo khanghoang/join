@@ -98,6 +98,7 @@ a {
   position: absolute;
   top: 2px;
   right: -160px;
+  color: #d12424;
   position: absolute;
   width: 110px;
   height: 38px;
@@ -116,6 +117,10 @@ a {
   border-right: solid 10px #fff;
   border-bottom: solid 10px transparent;
   border-left: solid 10px transparent;
+}
+.home-wrapper .error-msg {
+  margin-top: 10px;
+  color: #d12424;
 }
 .show {
   -webkit-animation: jelly-show 500ms;

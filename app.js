@@ -7,6 +7,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var routes = require('./routes');
 var user = require('./routes/user');
+var group = require('./routes/group');
 var http = require('http');
 var path = require('path');
 var flash = require('connect-flash');
@@ -86,9 +87,10 @@ passport.deserializeUser(function(_id, done) {
 });
 
 app.get('/', routes.index);
-app.get('/users', user.list);
-app.post('/users', user.post);
+// app.get('/users', user.list);
 app.get('/users/:username.:format?', auth, user.show);
+app.post('/users', user.post);
+app.post('/users/:username', user.update);
 app.post('/login',
   passport.authenticate('local', { failureRedirect: '/',
                                    failureFlash: 'Invalid username or password.' }),
@@ -101,6 +103,8 @@ app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
+
+app.post('/users/:username/groups', group.post);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

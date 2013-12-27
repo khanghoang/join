@@ -3,12 +3,15 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema,
 	bcrypt = require('bcrypt'),
     SALT_WORK_FACTOR = 10;
+
+var group = require('../routes/group');
 	
 var userSchema = new Schema({
 	username: { type: String, required: true, index: { unique: true } },
     password: { type: String, required: true },
 	fullname: String,
-	created_at: { type: Date, default: Date.now }
+	created_at: { type: Date, default: Date.now },
+    groups: [{ type: Schema.Types.ObjectId, ref: 'groups' }]
 });
 
 userSchema.methods.validPassword = function(password){
@@ -55,17 +58,34 @@ exports.list = function(req, res){
 };
 
 exports.post = function(req, res){
-    new User({
-    	username: req.body.username,
-    	password: req.body.password,
-    	fullname: req.body.fullname
-    }).save(function(err, user){
-    	res.send(user);
-    });
+    if (req.body.password != req.body.confirm_password) {
+        res.render('index', { messages: "Sign up fail" });
+    } else {
+        new User({
+        	username: req.body.username,
+        	password: req.body.password,
+        	fullname: req.body.fullname,
+            groups: []
+        }).save(function(err, user){
+        	res.send(user);
+        });
+    }
 };
 
 exports.show = function(req, res){
 	User.findOne({username: req.params.username}, function(err, user){
-		res.render('sidebar', { user: user });
+        group.Model.find({users: user._id}, function(err, groups){
+		  // res.render('sidebar', { user: user });
+          res.send([{user: user, groups: groups}]);
+        });
 	});
+};
+
+exports.update = function(req, res){
+    User.findOne({username: req.params.username}, function(err, user){
+        user.fullname = req.body.fullname;
+        user.save(function(err, user){
+            res.send(user);
+        });
+    });
 };
