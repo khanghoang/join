@@ -10,6 +10,7 @@ var userSchema = new Schema({
 	username: { type: String, required: true, index: { unique: true } },
     password: { type: String, required: true },
 	fullname: String,
+    avatar: String,
 	created_at: { type: Date, default: Date.now },
     groups: [{ type: Schema.Types.ObjectId, ref: 'groups' }]
 });
@@ -61,6 +62,7 @@ exports.post = function(req, res){
         	username: req.body.username,
         	password: req.body.password,
         	fullname: req.body.fullname,
+            avatar: "https://1.gravatar.com/avatar/a13b9d1fc146fc072c60d55dd348ddb6?d=https%3A%2F%2Fidenticons.github.com%2F456925e5b42509e868df6466fdf9cef5.png&r=x&s=440",
             groups: []
         }).save(function(err, user){
         	res.send(user);
@@ -70,9 +72,12 @@ exports.post = function(req, res){
 
 exports.show = function(req, res){
 	User.findOne({username: req.params.username}, function(err, user){
-        group.Model.find({users: user._id}, function(err, groups){
-		  res.render('user', {user: user, groups: groups});
-          // res.send([{user: user, groups: groups}]);
+        group.Model.find({users: {
+            _id: user._id,
+            fullname: user.fullname
+        }}, function(err, groups){
+            res.render('user', {user: user, groups: groups});
+            // res.send([{user: user, groups: groups}]);
         });
 	});
 };

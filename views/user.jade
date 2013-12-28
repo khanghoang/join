@@ -3,14 +3,17 @@ extends layout
 block content
 	include includes/sidebar
 	div.user-content
-		ul
-			each group in groups
-				li= group.group_name
-
 		form(id="new-group-form", class="form", method="POST", action="/users/#{user.username}/groups", autocomplete="off")
 			div.form__control
 				input(name="group_name", type="text", placeholder="Group name")
 			div.form__control
 				input(class="button", id="submit-button", type="submit", value="Create")
+		each group in groups
+			div.group
+				div.group__name
+					= group.group_name
+				div.group__list
+					each user in group.users
+						div.member= user.fullname.match(/\b(\w)/g).join('')
 
 	script(src='/javascripts/application.js')

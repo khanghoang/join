@@ -104,6 +104,7 @@ app.get('/logout', function(req, res){
 });
 
 app.post('/users/:username/groups', group.post);
+app.post('/users/:username/groups/add', group.add);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

@@ -6,7 +6,12 @@ var user = require('../routes/user');
 	
 var groupSchema = new Schema({
 	group_name: { type: String, required: true },
-	users: [{ type: Schema.Types.ObjectId, ref: 'users' }]
+	users: [
+		{
+			_id: { type: Schema.Types.ObjectId, ref: 'users' },
+			fullname: String
+		}
+	]
 });
 
 var Group = mongoose.model('groups', groupSchema);
@@ -22,7 +27,10 @@ exports.post = function(req, res){
         new Group({
 			group_name: req.body.group_name,
 			users: [
-				user._id
+				{
+					_id: user._id,
+					fullname: user.fullname
+				}
 			]
 		}).save(function(err, group){
 			// update current user
@@ -31,6 +39,23 @@ exports.post = function(req, res){
 				// res.send(group);
 				res.redirect('/users/' + user.username);
 	        });
+		});
+    });
+};
+exports.add = function(req, res){
+	user.Model.findOne({username: req.body.username}, function(err, user){
+		user.groups.push(req.body.group_id);
+		user.save(function(err, user){
+			Group.findOne({_id: req.body.group_id}, function(err, group){
+				group.users.push({
+					_id: user._id,
+					fullname: user.fullname
+				});
+				group.save(function(err, group){
+					res.send(group);
+					// res.redirect('/users/' + user.username);
+				});
+			});
 		});
     });
 };

@@ -1,6 +1,22 @@
-div.sidebar	
-	div= user.fullname
-	div
-		a(href="/logout")
-			| Logout 
-			i.fa.fa-sign-out.fa-1x
+div.sidebar
+	div.logo-small
+	//- div.user__fullname
+	//- 	= user.fullname
+	div.user-wrapper
+		div.user__avatar.avatar.small(style="background-image: url(#{user.avatar});")
+		div.user__account
+			| Account 
+			i.fa.fa-user
+		div.user__chat
+			| Group chat 
+			i.fa.fa-comment-o
+		div.user__notification
+			| Notification 
+			i.fa.fa-envelope-o
+		div.user__setting
+			| Setting 
+			i.fa.fa-gear
+		div.user__logout
+			a(href="/logout")
+				| Logout 
+				i.fa.fa-sign-out.fa-1x

@@ -22,7 +22,8 @@ body
 	font-family: 'Open Sans', sans-serif
 	font-size: 14px
 	font-weight: 300
-	background-color: #2c3338
+	// background-color: #f4f4f4
+	background-color: #fff
 
 input
 	outline: none
@@ -30,22 +31,34 @@ input
 	font-size: 0.857142em
 
 a
-	color: #00B7FF
+	color: #5a5656
 
 ::-webkit-input-placeholder /* WebKit browsers */
-	color: #606468
+	color: #5a5656
 
 :-moz-placeholder /* Mozilla Firefox 4 to 18 */
-	color: #606468
+	color: #5a5656
 
 ::-moz-placeholder /* Mozilla Firefox 19+ */
-	color: #606468
+	color: #5a5656
 
 :-ms-input-placeholder /* Internet Explorer 10+ */
-	color: #606468
+	color: #5a5656
 
 .wrapper
 	width: 100%
+
+.fade-in
+	-webkit-animation: fade-in 500ms
+	-webkit-animation-iteration-count: 1
+	-webkit-animation-fill-mode: forwards
+	-webkit-animation-timing-function: ease-out
+
+@-webkit-keyframes fade-in
+	0%
+		opacity: 0
+	100%
+		opacity: 1
 
 /*------------------------------------*\
     $HOME
@@ -57,22 +70,13 @@ a
 	left: 50%
 	margin-left: -125px
 	width: 250px
-	color: #606468
+	color: #5a5656
 	text-align: center
 	.logo
 		width: 100%
 		height: 105px
-	.form__control
-		margin-top: 10px
-		input[type="text"], input[type="password"]
-			width: 230px
-			padding: 15px 10px
-			color: #eee
-			background-color: #3b4148
-			border: 0
-			border-radius: 3px
-		#submit-button
-			width: 250px
+	#submit-button
+		width: 250px
 	#login-form
 		position: relative
 	#signup-form
@@ -84,7 +88,7 @@ a
 		display: none
 		margin-top: 10px
 	#switch-signup-link, #switch-login-link
-		color: #eee
+		color: #1ead75
 		cursor: pointer
 		&:hover 
 			text-decoration: underline
@@ -99,6 +103,16 @@ a
 	.error-msg
 		margin-top: 10px
 		color: #d12424
+
+.form__control
+	margin-top: 10px
+	input[type="text"], input[type="password"]
+		width: 230px
+		padding: 15px 10px
+		color: #5a5656
+		background-color: #e5e5e5
+		border: 0
+		border-radius: 3px
 
 .show
 	-webkit-animation: jelly-show 500ms
@@ -139,7 +153,7 @@ a
 	margin-top: -75px
 	margin-left: -75px
 	width: 150px
-	color: #eee
+	color: #5a5656
 	.gandalf__author
 		text-align: right
 		font-size: 0.857142em
@@ -159,16 +173,72 @@ a
 	top: 0
 	bottom: 0
 	left: 0
-	background-color: gray
-	width: 200px
+	width: 140px
+	background-color: #e4e4e4
+	.logo-small
+		position: absolute
+		top: 50%
+		left: 20px
+		margin-top: -50px
+		bg-sprite('/images/logo_small.png',100px,100px,0,0)
+	.user-wrapper
+		position: absolute
+		bottom: 0
+		width: 100px
+		padding: 20px
+		color: #5a5656
+		text-align: right
+		.user__avatar
+			margin: 20px 25px
+		.user__account, .user__chat, .user__notification, .user__setting, .user__logout
+			padding-top: 4px
+			a
+				text-decoration: none
+			.fa
+				width: 22px
+				text-align: center
+
+/*------------------------------------*\
+    $USER_CONTENT
+\*------------------------------------*/
 
 .user-content
-	color: #eee
 	position: absolute
 	top: 0
 	right: 0
 	bottom: 0
-	left: 200px
+	left: 140px
+	color: #5a5656
+	.form__control
+		display: inline-block
+		margin: 0 10px 0 0
+	#new-group-form
+		margin: 10px
+		padding: 10px
+		border-bottom: solid thin #e5e5e5
+
+.group
+	float: left
+	width: 200px
+	height: 150px
+	border: solid thin gray
+	border-radius: 3px
+	margin: 10px 0px 10px 20px
+	.group__name
+		font-weight: 700
+	.group__list
+		.member
+			float: left
+			padding: 3px 5px
+			background-color: gray
+			color: white
+			border-radius: 3px
+			margin: 3px
+			font-size: 0.857142em
+
+/*------------------------------------*\
+    $COMPONENTS
+\*------------------------------------*/
 
 .button
 	display: inline-block
@@ -190,3 +260,6 @@ a
 	background-position: center
 	background-size: cover
 	border-radius: 50%
+	&.small
+		width: 50px
+		height: 50px
