@@ -69,11 +69,27 @@ passport.use(new LocalStrategy({
   }
 ));
 
+
+
 var auth = function(req, res, next){
   if (!req.isAuthenticated())
     res.render('401.jade');
   else
     next();
+};
+
+var authz = function(req, res, next){
+  if (req.isAuthenticated()) {
+    user.Model.findById(req.session.passport.user, function(err, user) {
+      if (user.username == req.params.username) {
+        next();
+      } else {
+        res.render('401.jade');    
+      }
+    });
+  } else {
+    res.render('401.jade');
+  }
 };
 
 passport.serializeUser(function(user, done) {
@@ -86,9 +102,19 @@ passport.deserializeUser(function(_id, done) {
   });
 });
 
-app.get('/', routes.index);
+
+
+app.get('/', 
+  function(req, res, next){
+    if (req.isAuthenticated())
+      user.Model.findById(req.session.passport.user, function(err, user) {
+        res.redirect('/users/' + user.username);
+      });
+    else
+      next();
+  }, routes.index);
 app.get('/users', auth, user.list);
-app.get('/users/:username.:format?', auth, user.show);
+app.get('/users/:username.:format?', authz, user.show);
 app.post('/users', user.post);
 app.post('/login',
   passport.authenticate('local', { failureRedirect: '/',
@@ -103,8 +129,12 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
+
+
 app.post('/users/:username/groups', group.post);
 app.post('/users/:username/groups/add', group.add);
+
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
