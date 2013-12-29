@@ -1,0 +1,14 @@
+extends layout
+
+block content
+	//- include includes/sidebar
+	div.group-content
+		= group.group_name
+		ul
+		each user in group.users
+			li
+				= user._id
+				br
+				= user.fullname
+
+	script(src='/javascripts/application.js')

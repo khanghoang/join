@@ -22,6 +22,11 @@ var Group = mongoose.model('groups', groupSchema);
 
 module.exports.Model = Group;
 
+exports.show = function(req, res){
+	Group.findOne({_id: req.params.group_id}, function(err, group){
+		res.render('group', {group: group});
+	});
+}
 exports.post = function(req, res){
 	user.Model.findOne({username: req.params.username}, function(err, user){
         new Group({

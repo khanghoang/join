@@ -79,14 +79,8 @@ var auth = function(req, res, next){
 };
 
 var authz = function(req, res, next){
-  if (req.isAuthenticated()) {
-    user.Model.findById(req.session.passport.user, function(err, user) {
-      if (user.username == req.params.username) {
-        next();
-      } else {
-        res.render('401.jade');    
-      }
-    });
+  if (req.user && req.user.username == req.params.username) {
+    next();
   } else {
     res.render('401.jade');
   }
@@ -132,6 +126,7 @@ app.get('/logout', function(req, res){
 
 
 app.post('/users/:username/groups', group.post);
+app.get('/users/:username/groups/:group_id', group.show);
 app.post('/users/:username/groups/add', group.add);
 
 
