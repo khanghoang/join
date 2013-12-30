@@ -4,6 +4,7 @@
  */
 
 var express = require('express');
+var socket = require('socket.io');
 var mongoose = require('mongoose');
 var routes = require('./routes');
 var user = require('./routes/user');
@@ -13,6 +14,8 @@ var path = require('path');
 var flash = require('connect-flash');
 
 var app = express();
+var server = http.createServer(app);
+var io = socket.listen(server);
 mongoose.connect('mongodb://localhost/join_development');
 
 var passport = require('passport'),
@@ -129,6 +132,15 @@ app.post('/users/:username/groups/add', group.add);
 
 
 
-http.createServer(app).listen(app.get('port'), function(){
+io.sockets.on('connection', function(socket) {
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
+});
+
+
+
+server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
