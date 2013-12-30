@@ -1,5 +1,15 @@
-var socket = io.connect('http://localhost');
-socket.on('news', function (data) {
-	console.log(data);
-	socket.emit('my other event', { my: 'data' });
+var server = io.connect('http://localhost');
+
+$("#chat-form").submit(function(e){
+	var message = $("#chat-input").val();
+	server.emit('updatechat', message);
+	return false;
+});
+
+server.on('connect', function() {
+	server.emit('user join', currentUser, currentGroup);
+});
+
+server.on('updatechat', function(data) {
+	$("#chat-room").append("<div>"+data+"</div>");
 });

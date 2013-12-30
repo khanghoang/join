@@ -10,6 +10,18 @@ block content
 				= user._id
 				br
 				= user.fullname
+		form(id="chat-form", class="form", method="POST", action="", autocomplete="off")
+			div.form__control
+				input(id="chat-input", name="chat-input", type="text")
+			div.form__control
+				input(class="button", id="submit-button", type="submit", value="Send")
+		div#chat-room
 
 	script(src='/javascripts/application.js')
+	script(type='text/javascript')
+		var currentUser = !{JSON.stringify(user)}
+		delete currentUser.password;
+		delete currentUser.groups;
+		var currentGroup = !{JSON.stringify(group)}
+		delete currentGroup.users;
 	script(src='/javascripts/chat.js')
