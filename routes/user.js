@@ -71,13 +71,20 @@ exports.post = function(req, res){
 };
 
 exports.show = function(req, res){
-	User.findOne({username: req.params.username}, function(err, user){
-        group.Model.find({users: {
-            _id: user._id,
-            fullname: user.fullname
-        }}, function(err, groups){
-            res.render('user', {user: user, groups: groups});
-            // res.send([{user: user, groups: groups}]);
-        });
-	});
+    // User.findOne({username: req.params.username}, function(err, user){
+    //     group.Model.find({users: {
+    //         _id: user._id,
+    //         fullname: user.fullname
+    //     }}, function(err, groups){
+    //         res.render('user', {user: user, groups: groups});
+    //         // res.send([{user: user, groups: groups}]);
+    //     });
+    // });
+
+    group.Model.find({users: {
+        _id: req.user._id,
+        fullname: req.user.fullname
+    }}, function(err, groups){
+        res.render('user', {user: req.user, groups: groups});
+    });
 };

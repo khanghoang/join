@@ -101,9 +101,7 @@ passport.deserializeUser(function(_id, done) {
 app.get('/', 
   function(req, res, next){
     if (req.isAuthenticated())
-      user.Model.findById(req.session.passport.user, function(err, user) {
-        res.redirect('/users/' + user.username);
-      });
+      res.redirect('/users/' + req.user.username);
     else
       next();
   }, routes.index);
@@ -126,7 +124,7 @@ app.get('/logout', function(req, res){
 
 
 app.post('/users/:username/groups', group.post);
-app.get('/users/:username/groups/:group_id', group.show);
+app.get('/users/:username/groups/:group_id', authz, group.show);
 app.post('/users/:username/groups/add', group.add);
 
 

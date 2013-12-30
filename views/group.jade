@@ -1,8 +1,8 @@
 extends layout
 
 block content
-	//- include includes/sidebar
-	div.group-content
+	include includes/sidebar
+	div.user-content
 		= group.group_name
 		ul
 		each user in group.users

@@ -24,7 +24,7 @@ module.exports.Model = Group;
 
 exports.show = function(req, res){
 	Group.findOne({_id: req.params.group_id}, function(err, group){
-		res.render('group', {group: group});
+		res.render('group', {user: req.user, group: group});
 	});
 }
 exports.post = function(req, res){
