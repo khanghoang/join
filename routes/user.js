@@ -56,7 +56,8 @@ exports.list = function(req, res){
 
 exports.post = function(req, res){
     if (req.body.password != req.body.confirm_password) {
-        res.render('index', { messages: "Password does not match." });
+        req.flash('confirm-password-error', 'Passwords do not match.');
+        res.redirect('/register');
     } else {
         new User({
         	username: req.body.username,
@@ -65,7 +66,16 @@ exports.post = function(req, res){
             avatar: "https://1.gravatar.com/avatar/a13b9d1fc146fc072c60d55dd348ddb6?d=https%3A%2F%2Fidenticons.github.com%2F456925e5b42509e868df6466fdf9cef5.png&r=x&s=440",
             groups: []
         }).save(function(err, user){
-        	res.send(user);
+            if (err.err) {
+                req.flash('username-error', 'This username has been taken.');
+            } else if (err.errors) {
+                var errors = err.errors;
+                for(var error in errors) {
+                    errors[error].message = errors[error].message.replace(/Path|`/g, ' ').trim();
+                    req.flash(errors[error].path+'-error', capitaliseFirstLetter(errors[error].message));
+                }
+            }
+            res.redirect('/register');
         });
     }
 };
@@ -88,3 +98,7 @@ exports.show = function(req, res){
         res.render('user', {user: req.user, groups: groups});
     });
 };
+
+function capitaliseFirstLetter(string){
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}

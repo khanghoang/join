@@ -108,6 +108,13 @@ app.get('/',
     else
       next();
   }, routes.index);
+app.get('/register', 
+  function(req, res, next){
+    if (req.isAuthenticated())
+      res.redirect('/users/' + req.user.username);
+    else
+      next();
+  }, routes.index);
 app.get('/users', auth, user.list);
 app.get('/users/:username.:format?', authz, user.show);
 app.post('/users', user.post);

@@ -2,37 +2,46 @@ extends layout
 
 block content
 	div.home-wrapper
-		div.logo
-			img(src="images/logo.png")
+		div.form-wrapper
+			div.logo
+				img(src="images/logo.png")
 
-		form(id="login-form", class="form", method="POST", action="/login", autocomplete="off")
-			if messages != ""
-				div.error-dialog-box.show
-					| #{messages}
-			div.form__control
-				input(name="username", type="text", placeholder="Username")
-			div.form__control
-				input(name="password", type="password", placeholder="Password")
-			div.form__control
-				input(class="button", id="submit-button", type="submit", value="Login")
+			form(id="login-form", class="form", method="POST", action="/login", autocomplete="off")
+				div.form__control
+					if loginErr != ""
+						div.error-dialog-box.show
+							| #{loginErr}
+					input(name="username", type="text", placeholder="Username")
+				div.form__control
+					input(name="password", type="password", placeholder="Password")
+				div.form__control
+					input(class="button", id="submit-button", type="submit", value="Login")
+				div.form__control
+					| or you don't have an account? 
+					a#switch-signup-link Sign up
 
-		div.switch-signup
-			| or you don't have an account? 
-			span#switch-signup-link Sign up
-		div.switch-login
-			| have an account? 
-			span#switch-login-link Login
-
-		form(id="signup-form", class="form", method="POST", action="/users", autocomplete="off")
-			div.form__control
-				input(name="username", type="text", placeholder="Username")
-			div.form__control
-				input(name="fullname", type="text", placeholder="Fullname")
-			div.form__control
-				input(name="password", type="password", placeholder="Password")
-			div.form__control
-				input(name="confirm_password", type="password", placeholder="Confirm password")
-			div.form__control
-				input(class="button", id="submit-button", type="submit", value="Sign up")
+			form(id="signup-form", class="form", method="POST", action="/users", autocomplete="off")
+				div.form__control
+					| have an account? 
+					a#switch-login-link Login
+				div.form__control
+					if usernameErr != ""
+						div.error-dialog-box.show
+							= usernameErr
+					input(name="username", type="text", placeholder="Username")
+				div.form__control
+					input(name="fullname", type="text", placeholder="Fullname")
+				div.form__control
+					if passwordErr != ""
+						div.error-dialog-box.show
+							= passwordErr
+					input(name="password", type="password", placeholder="Password")
+				div.form__control
+					if confirmPasswordErr != ""
+						div.error-dialog-box.show
+							= confirmPasswordErr
+					input(name="confirm_password", type="password", placeholder="Confirm password")
+				div.form__control
+					input(class="button", id="submit-button", type="submit", value="Sign up")
 
 	script(src='javascripts/home.js')
