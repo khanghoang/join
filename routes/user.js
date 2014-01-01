@@ -1,5 +1,6 @@
 
 var mongoose = require('mongoose'),
+    validate = require('mongoose-validator').validate,
 	Schema = mongoose.Schema,
 	bcrypt = require('bcrypt'),
     SALT_WORK_FACTOR = 10;
@@ -8,7 +9,7 @@ var group = require('../routes/group');
 	
 var userSchema = new Schema({
 	username: { type: String, required: true, index: { unique: true } },
-    password: { type: String, required: true },
+    password: { type: String, required: true, validate: validate({message: "Password should be at least 8."}, 'len', 8, 50) },
 	fullname: String,
     avatar: String,
 	created_at: { type: Date, default: Date.now },
