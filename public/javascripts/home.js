@@ -1,4 +1,3 @@
-
 if (window.location.pathname.indexOf("register") == -1) {
 	$("#login-form").show();
 } else {

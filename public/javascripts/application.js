@@ -1,4 +1,3 @@
-
 function AppModel(url) {
 	this.url = url;
 }

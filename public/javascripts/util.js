@@ -1,4 +1,3 @@
-
 function AppUtil () {
 	var util = {
 		checkEnvironment: function() {
