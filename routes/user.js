@@ -42,3 +42,20 @@ exports.post = function(req, res){
 function capitaliseFirstLetter(string){
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+exports.postFacebook = function (req, res){
+
+}
+
+function createUserFacebook(profile, callback)
+{
+  new res.app.db.models.User({
+    username: req.body.username,
+    password: req.body.password,
+    fullname: req.body.fullname,
+    avatar: "https://1.gravatar.com/avatar/a13b9d1fc146fc072c60d55dd348ddb6?d=https%3A%2F%2Fidenticons.github.com%2F456925e5b42509e868df6466fdf9cef5.png&r=x&s=440",
+    groups: []
+  }).save(function(err, user){
+    callback(user);
+  });
+}
