@@ -1,5 +1,6 @@
 exports = module.exports = function(app, passport) {
 	var LocalStrategy = require('passport-local').Strategy;
+	var FacebookStrategy = require('passport-facebook').Strategy;
 
 	passport.use(new LocalStrategy({
 			usernameField: 'username',
@@ -31,4 +32,20 @@ exports = module.exports = function(app, passport) {
 			done(err, user);
 		});
 	});
+
+	passport.use(new FacebookStrategy({
+	    clientID: "462105547228530",
+	    clientSecret: "4bb0a8afb7d8351852b10894b86286c3",
+	    callbackURL: "http://localhost:3000/auth/facebook/callback"
+	  },
+	  function(accessToken, refreshToken, profile, done) {
+
+	    console.log(profile);
+
+	    createUserFacebook(profile, function(user){
+	    	return done(null, user);
+	    });
+
+	  }
+	));
 };

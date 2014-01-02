@@ -40,6 +40,21 @@ exports = module.exports = function(app) {
 	  res.redirect('/');
 	});
 
+	//facebook login/signup
+	app.get('/auth/facebook', passport.authenticate('facebook'));
+	app.get('/auth/facebook',
+	  passport.authenticate('facebook', { scope: ['read_stream', 'publish_actions'] })
+	);
+
+	app.get('/auth/facebook/callback', 
+	  passport.authenticate('facebook', { successRedirect: '/',
+	                                      failureRedirect: '/login' }),
+	  function(req, res) {
+	    // If this function gets called, authentication was successful.
+	    // `req.user` contains the authenticated user.
+	    res.redirect('/users/' + req.user.username);
+	});
+
 	//user view
 	app.get('/users', auth, user.list);
 	app.get('/users/:username.:format?', authz, user.show);
