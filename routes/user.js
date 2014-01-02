@@ -47,6 +47,44 @@ exports.postFacebook = function (req, res){
 
 }
 
+exports.createUserFacebook = function(app, profile, callback)
+{
+  console.log("this is profile " + profile);
+  new app.db.models.User({
+    username: profile.username.replace(".", ""),   
+    password: "",     
+    fullname: profile.name,
+    facebook_id: profile.id,
+    avatar: "https://1.gravatar.com/avatar/a13b9d1fc146fc072c60d55dd348ddb6?d=https%3A%2F%2Fidenticons.github.com%2F456925e5b42509e868df6466fdf9cef5.png&r=x&s=440",
+    groups: []
+  }).save(function(err, user){
+
+    if (err) {
+      console.log(user);
+      console.log(err);
+      callback(0);
+      return;
+    };
+
+    callback(user);
+  });
+}
+
+exports.checkUserFacebookIsSignupAlr = function(app, profile, callback)
+{
+  app.db.models.User.findOne({facebook_id: profile.id}, function(err, user){
+
+    if (err) {
+      callback(0);
+      return;
+    };
+
+    callback(user);
+  }); 
+}exports.postFacebook = function (req, res){
+
+}
+
 function createUserFacebook(profile, callback)
 {
   new res.app.db.models.User({

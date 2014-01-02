@@ -1,3 +1,5 @@
+UserClass = require("./routes/user");
+
 exports = module.exports = function(app, passport) {
 	var LocalStrategy = require('passport-local').Strategy;
 	var FacebookStrategy = require('passport-facebook').Strategy;
@@ -42,10 +44,20 @@ exports = module.exports = function(app, passport) {
 
 	    console.log(profile);
 
-	    createUserFacebook(profile, function(user){
+	    UserClass.checkUserFacebookIsSignupAlr(app, profile, function(user){
+	    	if (!user) {
+				UserClass.createUserFacebook(app, profile, function(user){
+			    	if (!user) {
+						console.log(user);
+					}
+
+					return done(null, user);	
+			    });	    		
+			    return;
+	    	};
+
 	    	return done(null, user);
 	    });
-
 	  }
 	));
 };
