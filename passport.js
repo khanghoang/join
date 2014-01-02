@@ -7,17 +7,17 @@ exports = module.exports = function(app, passport) {
 		},
 		function(username, password, done) {
 	    app.db.models.User.findOne({ username: username }, function(err, user) {
-			if (err) { return done(err); }
+				if (err) { return done(err); }
 
-			if (!user) {
-				return done(null, false, { message: 'Incorrect username.' });
-			}
+				if (!user) {
+					return done(null, false, { message: 'Incorrect username.' });
+				}
 
-			if (!user.validPassword(password)) {
-				return done(null, false, { message: 'Incorrect password.' });
-			}
+				if (!user.validPassword(password)) {
+					return done(null, false, { message: 'Incorrect password.' });
+				}
 
-			return done(null, user);
+				return done(null, user);
 	    });
 		}
 	));
