@@ -30,7 +30,8 @@ html, body
 body
 	margin: 0
 	font: 300 14px 'Open Sans', sans-serif
-	background-color: #f4f4f4
+	// background-color: #f4f4f4
+	background-color: #f3f0f0
 
 input
 	outline: none
@@ -99,6 +100,19 @@ a
 		font-size: 0.857142em
 		dialog-box(170px,auto,#fff,13px)
 
+	.login-fb
+		margin-top: 20px
+		a.login-fb-button
+			display: block
+			width: 75px
+			height: 75px
+			line-height: 75px
+			margin: 20px auto 0
+			font-size: 35px
+			color: white
+			background-color: #4c66a4
+			border-radius: 50%
+
 /*------------------------------------*\
     $401
 \*------------------------------------*/
@@ -164,7 +178,7 @@ a
 	.user-content__title
 		margin: 0 10px
 		padding: 10px 0
-		border-bottom: solid thin mercury
+		border-bottom: solid thin #e0e0e0
 		.form__control
 			display: inline-block
 			vertical-align: middle
@@ -180,9 +194,10 @@ a
 	float: left
 	width: 200px
 	height: 150px
+	margin: 12px 12px 0 0
 	background-color: white
 	border-radius: 3px
-	margin: 12px 12px 0 0
+	box-shadow: 0 4px 0 rgba(0,0,0,.10)
 	.group__name
 		font-weight: 700
 	.group__list

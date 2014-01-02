@@ -17,8 +17,12 @@ block content
 				div.form__control
 					input(class="button", id="submit-button", type="submit", value="Login")
 				div.form__control
-					| or you don't have an account? 
+					| you don't have an account? 
 					a#switch-signup-link Sign up
+				div.form__control.login-fb
+					| OR login with
+					a.login-fb-button(href="")
+						i.fa.fa-facebook
 
 			form(id="signup-form", class="form", method="POST", action="/users", autocomplete="off")
 				div.form__control
