@@ -37,7 +37,8 @@ exports.add = function(req, res){
 					fullname: user.fullname
 				});
 				group.save(function(err, group){
-					res.redirect('/users/' + user.username);
+					res.send(group);
+					// res.redirect('/users/' + user.username);
 				});
 			});
 		});

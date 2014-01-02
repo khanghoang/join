@@ -68,13 +68,13 @@ io.sockets.on('connection', function(socket) {
     socket.username = user.username;
     socket.room = group.group_name;
     socket.join(group.group_name);
-    socket.broadcast.to(group.group_name).emit('updatechat', user.fullname + ' has connected to this room');
+    socket.broadcast.to(group.group_name).emit('updatechat', user.fullname + ' has connected to this room.');
   });
   socket.on('updatechat', function (data) {
     io.sockets.in(socket.room).emit("updatechat", data);
   });
   socket.on('disconnect', function() {
-    socket.broadcast.emit('updatechat', 'SERVER', socket.username + ' has disconnected');
+    socket.broadcast.to(socket.room).emit('updatechat', socket.username + ' has leaved this room.');
     socket.leave(socket.room);
   });
 });
