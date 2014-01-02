@@ -3,18 +3,20 @@ extends layout
 block content
 	include includes/sidebar
 	div.user-content
-		form(id="new-group-form", class="form", method="POST", action="/users/#{user.username}/groups", autocomplete="off")
-			div.form__control
-				input(name="group_name", type="text", placeholder="Group name")
-			div.form__control
-				input(class="button", id="submit-button", type="submit", value="Create")
-		each group in groups
-			div.group
-				div.group__name
-					a(href="/users/#{user.username}/groups/#{group._id}")
-						= group.group_name
-				div.group__list
-					each user in group.users
-						div.member= user.fullname.match(/\b(\w)/g).join('')
+		div.user-content__title
+			form(id="new-group-form", class="form", method="POST", action="/users/#{user.username}/groups", autocomplete="off")
+				div.form__control
+					input(name="group_name", type="text", placeholder="Group name")
+				div.form__control
+					input(class="button", id="submit-button", type="submit", value="Create")
+		div.user-content__detail
+			each group in groups
+				div.group
+					div.group__name
+						a(href="/users/#{user.username}/groups/#{group._id}")
+							= group.group_name
+					div.group__list
+						each user in group.users
+							div.member= user.fullname.match(/\b(\w)/g).join('')
 
 	script(src='/javascripts/application.js')
