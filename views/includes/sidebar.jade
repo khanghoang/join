@@ -1,11 +1,9 @@
 div.sidebar
 	div.logo-small
-	//- div.user__fullname
-	//- 	= user.fullname
 	div.user-wrapper
 		div.user__avatar.avatar.small(style="background-image: url(#{user.avatar});")
 		div.user__account
-			= user.fullname.split(" ")[user.fullname.split(" ").length - 1]
+			= user.fullname.split(" ")[0]
 			i.fa.fa-user
 		div.user__chat
 			| Group chat 

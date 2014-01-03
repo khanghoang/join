@@ -40,6 +40,16 @@ exports = module.exports = function(app) {
 	  res.redirect('/');
 	});
 
+	//facebook login/signup
+	app.get('/auth/facebook',
+	  passport.authenticate('facebook', { scope: ['read_stream', 'publish_actions'] })
+	);
+	app.get('/auth/facebook/callback', 
+	  passport.authenticate('facebook', { failureRedirect: '/' }),
+	  function(req, res) {
+	    res.redirect('/users/' + req.user.username);
+	});
+
 	//user view
 	app.get('/users', auth, user.list);
 	app.get('/users/:username.:format?', authz, user.show);

@@ -7,8 +7,9 @@ exports = module.exports = function(app, mongoose) {
 
   var userSchema = new Schema({
     username: { type: String, required: true, index: { unique: true } },
-    password: { type: String, required: true, validate: validate({message: "Password should be at least 8."}, 'len', 8) },
+    password: { type: String, required: false },
     fullname: { type: String, required: true },
+    facebook_id: { type: String, required: false },
     avatar: String,
     created_at: { type: Date, default: Date.now },
     groups: [{ type: Schema.Types.ObjectId, ref: 'groups' }]
