@@ -17,6 +17,9 @@ block content
 							= group.group_name
 					div.group__list
 						each user in group.users
-							div.member= user.fullname.match(/\b(\w)/g).join('')
+							- var acronym = user.fullname.match(/\b(\w)/g).join('')
+							- var char = acronym.charAt(0).toLowerCase()
+							div(class="member #{char}")
+								= acronym
 
 	script(src='/javascripts/application.js')

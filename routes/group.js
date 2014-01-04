@@ -6,7 +6,7 @@ exports.show = function(req, res){
 
 exports.post = function(req, res){
 	res.app.db.models.User.findOne({username: req.params.username}, function(err, user){
-    	new res.app.db.models.Group({
+  	new res.app.db.models.Group({
 			group_name: req.body.group_name,
 			users: [
 				{

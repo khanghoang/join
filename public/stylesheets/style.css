@@ -190,6 +190,7 @@ a:hover {
 .sidebar .user-wrapper .user__notification a,
 .sidebar .user-wrapper .user__setting a,
 .sidebar .user-wrapper .user__logout a {
+  color: #808080;
   text-decoration: none;
 }
 .sidebar .user-wrapper .user__account .fa,
@@ -199,6 +200,27 @@ a:hover {
 .sidebar .user-wrapper .user__logout .fa {
   width: 22px;
   text-align: center;
+}
+.sidebar .user-wrapper .user__account.selected,
+.sidebar .user-wrapper .user__chat.selected,
+.sidebar .user-wrapper .user__notification.selected,
+.sidebar .user-wrapper .user__setting.selected,
+.sidebar .user-wrapper .user__logout.selected {
+  position: relative;
+}
+.sidebar .user-wrapper .user__account.selected:after,
+.sidebar .user-wrapper .user__chat.selected:after,
+.sidebar .user-wrapper .user__notification.selected:after,
+.sidebar .user-wrapper .user__setting.selected:after,
+.sidebar .user-wrapper .user__logout.selected:after {
+  content: "";
+  position: absolute;
+  border-top: solid 10px transparent;
+  border-right: solid 10px #f3f0f0;
+  border-bottom: solid 10px transparent;
+  border-left: solid 10px transparent;
+  right: -20px;
+  bottom: 0;
 }
 /*------------------------------------*     $USER_CONTENT
 \*------------------------------------*/
@@ -225,29 +247,88 @@ a:hover {
   padding: 0 10px;
 }
 .group {
+  position: relative;
   float: left;
-  width: 200px;
-  height: 150px;
+  width: 190px;
+  height: 140px;
   margin: 12px 12px 0 0;
+  padding: 5px;
   background-color: #fff;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
   box-shadow: 0 4px 0 rgba(0,0,0,0.1);
 }
-.group .group__name {
+.group .group__name a {
+  font-size: 1.5em;
   font-weight: 700;
+  color: #5a5656;
+  text-decoration: none;
+}
+.group .group__list {
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }
 .group .group__list .member {
   float: left;
   padding: 3px 5px;
-  background-color: #808080;
   color: #fff;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  margin: 3px;
+  margin: 0 0 5px 5px;
   font-size: 0.857142em;
+}
+.group .group__list .member.a,
+.group .group__list .member.m,
+.group .group__list .member.y {
+  background-color: #ec4b43;
+}
+.group .group__list .member.b,
+.group .group__list .member.n,
+.group .group__list .member.z {
+  background-color: #8bb5a9;
+}
+.group .group__list .member.c,
+.group .group__list .member.o {
+  background-color: #bbad55;
+}
+.group .group__list .member.d,
+.group .group__list .member.p {
+  background-color: #e0b0ac;
+}
+.group .group__list .member.e,
+.group .group__list .member.q {
+  background-color: #e1ac2c;
+}
+.group .group__list .member.f,
+.group .group__list .member.r {
+  background-color: #21544f;
+}
+.group .group__list .member.g,
+.group .group__list .member.s {
+  background-color: #d1bfa9;
+}
+.group .group__list .member.h,
+.group .group__list .member.t {
+  background-color: #60754e;
+}
+.group .group__list .member.i,
+.group .group__list .member.u {
+  background-color: #6c3f46;
+}
+.group .group__list .member.j,
+.group .group__list .member.v {
+  background-color: #55897d;
+}
+.group .group__list .member.k,
+.group .group__list .member.w {
+  background-color: #c13929;
+}
+.group .group__list .member.l,
+.group .group__list .member.x {
+  background-color: #811b28;
 }
 /*------------------------------------*     $COMPONENTS
 \*------------------------------------*/

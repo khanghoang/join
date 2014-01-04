@@ -16,7 +16,7 @@ var app = express(),
 app.db = mongoose.connect('mongodb://localhost/join_development');
 
 //config data models
-require('./models')(app, mongoose);
+require('./models')(app);
 
 //config passport
 require('./passport')(app, passport);

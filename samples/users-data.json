@@ -1,0 +1,70 @@
+[
+  {
+    "_id": "52c7a233a3323c1ce0000001",
+    "username": "toan",
+    "password": "admin2359",
+    "fullname": "Toan Nguyen",
+    "avatar": "https://1.gravatar.com/avatar/a13b9d1fc146fc072c60d55dd348ddb6?d=https%3A%2F%2Fidenticons.github.com%2F456925e5b42509e868df6466fdf9cef5.png&r=x&s=440",
+    "groups": [
+      "52c7a1e76125d412e0000008"
+    ]
+  },
+  {
+    "_id": "52c7a233a3323c1ce0000002",
+    "username": "khang",
+    "password": "admin2359",
+    "fullname": "Khang Hoang",
+    "avatar": "https://1.gravatar.com/avatar/a13b9d1fc146fc072c60d55dd348ddb6?d=https%3A%2F%2Fidenticons.github.com%2F456925e5b42509e868df6466fdf9cef5.png&r=x&s=440",
+    "groups": [
+      "52c7a1e76125d412e0000008"
+    ]
+  },
+  {
+    "_id": "52c7a233a3323c1ce0000003",
+    "username": "bao",
+    "password": "admin2359",
+    "fullname": "Bao Huynh",
+    "avatar": "https://1.gravatar.com/avatar/a13b9d1fc146fc072c60d55dd348ddb6?d=https%3A%2F%2Fidenticons.github.com%2F456925e5b42509e868df6466fdf9cef5.png&r=x&s=440",
+    "groups": []
+  },
+  {
+    "_id": "52c7a233a3323c1ce0000004",
+    "username": "kaiwei",
+    "password": "admin2359",
+    "fullname": "Kaiwei Chen",
+    "avatar": "https://1.gravatar.com/avatar/a13b9d1fc146fc072c60d55dd348ddb6?d=https%3A%2F%2Fidenticons.github.com%2F456925e5b42509e868df6466fdf9cef5.png&r=x&s=440",
+    "groups": [
+      "52c7a1e76125d412e0000009"
+    ]
+  },
+  {
+    "_id": "52c7a233a3323c1ce0000005",
+    "username": "wenhan",
+    "password": "admin2359",
+    "fullname": "Wenhan Zhou",
+    "avatar": "https://1.gravatar.com/avatar/a13b9d1fc146fc072c60d55dd348ddb6?d=https%3A%2F%2Fidenticons.github.com%2F456925e5b42509e868df6466fdf9cef5.png&r=x&s=440",
+    "groups": [
+      "52c7a1e76125d412e0000009"
+    ]
+  },
+  {
+    "_id": "52c7a233a3323c1ce0000006",
+    "username": "hongting",
+    "password": "admin2359",
+    "fullname": "Hong Ting Wong",
+    "avatar": "https://1.gravatar.com/avatar/a13b9d1fc146fc072c60d55dd348ddb6?d=https%3A%2F%2Fidenticons.github.com%2F456925e5b42509e868df6466fdf9cef5.png&r=x&s=440",
+    "groups": [
+      "52c7a1e76125d412e0000009"
+    ]
+  },
+  {
+    "_id": "52c7a233a3323c1ce0000007",
+    "username": "colin",
+    "password": "admin2359",
+    "fullname": "Colin Toh",
+    "avatar": "https://1.gravatar.com/avatar/a13b9d1fc146fc072c60d55dd348ddb6?d=https%3A%2F%2Fidenticons.github.com%2F456925e5b42509e868df6466fdf9cef5.png&r=x&s=440",
+    "groups": [
+      "52c7a1e76125d412e0000009"
+    ]
+  }
+]

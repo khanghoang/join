@@ -17,6 +17,7 @@
     "passport-facebook": "*",
     "bcrypt": "*",
     "connect-flash": "*",
-    "socket.io": "*"
+    "socket.io": "*",
+    "grunt": "~0.4.2"
   }
 }

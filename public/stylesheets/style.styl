@@ -164,10 +164,22 @@ a
 		.user__account, .user__chat, .user__notification, .user__setting, .user__logout
 			padding-top: 4px
 			a
+				color: gray
 				text-decoration: none
 			.fa
 				width: 22px
 				text-align: center
+			&.selected
+				position: relative
+				&:after
+					content: ""
+					position: absolute
+					border-top: solid 10px transparent
+					border-right: solid 10px #f3f0f0
+					border-bottom: solid 10px transparent
+					border-left: solid 10px transparent
+					right: -20px
+					bottom: 0
 
 /*------------------------------------*\
     $USER_CONTENT
@@ -191,24 +203,57 @@ a
 		padding: 0 10px
 
 .group
+	position: relative
 	float: left
-	width: 200px
-	height: 150px
+	width: 190px
+	height: 140px
 	margin: 12px 12px 0 0
+	padding: 5px
 	background-color: white
 	border-radius: 3px
 	box-shadow: 0 4px 0 rgba(0,0,0,.10)
 	.group__name
-		font-weight: 700
+		a
+			font-size: 1.5em
+			font-weight: 700
+			color: scorpion
+			text-decoration: none
 	.group__list
+		position: absolute
+		left: 0
+		bottom: 0
 		.member
 			float: left
 			padding: 3px 5px
-			background-color: gray
 			color: white
 			border-radius: 3px
-			margin: 3px
+			margin: 0 0 5px 5px
 			font-size: 0.857142em
+			&.a, &.m, &.y
+				background-color: #ec4b43
+			&.b, &.n, &.z
+				background-color: #8bb5a9
+			&.c, &.o
+				background-color: #bbad55
+			&.d, &.p
+				background-color: #e0b0ac
+			&.e, &.q
+				background-color: #e1ac2c
+			&.f, &.r
+				background-color: #21544f
+			&.g, &.s
+				background-color: #d1bfa9
+			&.h, &.t
+				background-color: #60754e
+			&.i, &.u
+				background-color: #6c3f46
+			&.j, &.v
+				background-color: #55897d
+			&.k, &.w
+				background-color: #c13929
+			&.l, &.x
+				background-color: #811b28
+
 
 /*------------------------------------*\
     $COMPONENTS

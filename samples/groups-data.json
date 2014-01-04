@@ -1,0 +1,38 @@
+[
+  {
+    "_id": "52c7a1e76125d412e0000008",
+    "group_name": "Join",
+    "users": [
+      {
+        "_id": "52c7a233a3323c1ce0000001",
+        "fullname": "Toan Nguyen"
+      },
+      {
+        "_id": "52c7a233a3323c1ce0000002",
+        "fullname": "Khang Hoang"
+      }
+    ]
+  },
+  {
+    "_id": "52c7a1e76125d412e0000009",
+    "group_name": "2359 Bosses",
+    "users": [
+      {
+        "_id": "52c7a233a3323c1ce0000004",
+        "fullname": "Kaiwei Chen"
+      },
+      {
+        "_id": "52c7a233a3323c1ce0000005",
+        "fullname": "Wenhan Zhou"
+      },
+      {
+        "_id": "52c7a233a3323c1ce0000006",
+        "fullname": "Hong Ting Wong"
+      },
+      {
+        "_id": "52c7a233a3323c1ce0000007",
+        "fullname": "Colin Toh"
+      }
+    ]
+  }
+]
