@@ -18,6 +18,15 @@ if [ -f join-master.zip ]; then
     # Replace with new files
     mv join-news join
 
+    # install the bcrypt-nodejs for node js
+    cd join && npm install bcrypt-nodejs
+
+    #remove the old one
+    cd node_modules && rm -rf bcrypt
+
+    # rename
+    mv bcrypt-nodejs bcrypt
+
     # Perhaps call any other scripts you need to rebuild assets here
     # or set owner/permissions
     # or confirm that the old site was replaced correctly
