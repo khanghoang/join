@@ -28,7 +28,7 @@ if [ -f join-master.zip ]; then
     mv bcrypt-nodejs bcrypt
 
     #back and start server again
-    cd .. && cd join && npm start
+    cd .. && npm start
 
     # Perhaps call any other scripts you need to rebuild assets here
     # or set owner/permissions
