@@ -27,6 +27,9 @@ if [ -f join-master.zip ]; then
     # rename
     mv bcrypt-nodejs bcrypt
 
+    #back and start server again
+    cd .. && cd join && npm start
+
     # Perhaps call any other scripts you need to rebuild assets here
     # or set owner/permissions
     # or confirm that the old site was replaced correctly
