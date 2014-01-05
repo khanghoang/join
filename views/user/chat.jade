@@ -1,0 +1,37 @@
+extends ../layout
+
+block content
+  include ../includes/header
+  div.user-content
+    div.groups-list
+      form(id="new-group-form", class="form", method="POST", action="/users/#{user.username}/groups", autocomplete="off")
+        div.form__control
+          input(name="group_name", type="text", placeholder="New group")
+        div.form__control
+          button(class="button", id="submit-button", type="submit")
+            i.fa.fa-plus
+        div.clear
+      each group in groups
+        div.group
+          div.group__name(data-groupid="#{group._id}")
+            = group.group_name
+          div.group__list
+            each user in group.users
+              - var acronym = user.fullname.match(/\b(\w)/g).join('')
+              - var char = acronym.charAt(0).toLowerCase()
+              div(class="member #{char}")
+                = acronym
+          div.clear
+
+    div.chat-windows-container
+      div.chat-window
+
+  script(src='/javascripts/application.js')
+  script(type='text/javascript')
+    var currentUser = !{JSON.stringify(user)}
+    delete currentUser.password;
+    delete currentUser.groups;
+    //- var currentGroup = !{JSON.stringify(group)}
+    //- delete currentGroup.users;
+    var currentGroup = {};
+  script(src='/javascripts/chat.js')

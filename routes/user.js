@@ -9,7 +9,7 @@ exports.show = function(req, res){
       _id: req.user._id,
       fullname: req.user.fullname
   }}, function(err, groups){
-      res.render('user', {user: req.user, groups: groups});
+      res.render('user/chat', {user: req.user, groups: groups});
   });
 };
 

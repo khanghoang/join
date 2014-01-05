@@ -1,0 +1,20 @@
+div.top-header
+  div.logo-small
+  ul.user-wrapper
+    li.user__avatar
+      div.avatar.small(style="background-image: url(#{user.avatar});")
+    li.user__account
+      a(href="/users/#{user.username}/profile")
+        = user.fullname
+    li.user__chat
+      a(href="/users/#{user.username}/chat")
+        | Chat groups
+    li.user__notification
+      a(href="")
+        | Notification
+    li.user__setting
+      a(href="")
+        | Setting
+    li.user__logout
+      a(href="/logout")
+        | Logout

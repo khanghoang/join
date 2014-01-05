@@ -1,57 +1,70 @@
 @import "mixins.styl"
 
-outer-space = #2c3338
-bright-gray = #3b4148
-shuttle-gray = #606468
-gallery = #eee
-mercury = #e5e5e5
-mountain-meadow = #1ead75
-scorpion = #5a5656
-
 /*------------------------------------*\
     $CONTENTS
 \*------------------------------------*/
 /**
  * CONTENTS............You’re reading it!
- * SITE................Set defaults
+ * DEFAULTS............Set defaults
  * HOME................Styles for login/signup forms
+ * HEADER_BAR..........
+ * PROFILE.............
+ * CHAT................
+ * SETTING.............
  * 401.................Unauthorized page
  * 404.................File not found page
- * SIDEBAR
+ * COMPONENTS..........
  */
 
 /*------------------------------------*\
-    $SITE
+    $DEFAULTS
 \*------------------------------------*/
+
+primary-color = #1ead75
+home-bg-color = #2c3338
+home-text-color = #606468
+home-field-bg-color = #3b4148
+home-field-text-color = #eee
+
+site-bg-color = #f4f4f4
+site-text-color = #5a5656
+site-field-bg-color = #e5e5e5
+site-field-text-color = #5a5656
+
+alert-color = #c50f13
+success-color = #5da423
 
 html, body
 	height: 100%
 
 body
-	margin: 0
 	font: 300 14px 'Open Sans', sans-serif
-	// background-color: #f4f4f4
-	background-color: #f3f0f0
+	background-color: site-bg-color
 
 input
-	outline: none
+	margin: 0
+	padding: 0
 	font-family: 'Open Sans', sans-serif
 	font-size: 0.857142em
+	outline: none
+	border: 0
+	border-radius: 3px
 
 ::-webkit-input-placeholder /* WebKit browsers */
-	color: shuttle-gray
+	color: home-text-color
 
 :-moz-placeholder /* Mozilla Firefox 4 to 18 */
-	color: shuttle-gray
+	color: home-text-color
 
 ::-moz-placeholder /* Mozilla Firefox 19+ */
-	color: shuttle-gray
+	color: home-text-color
 
 :-ms-input-placeholder /* Internet Explorer 10+ */
-	color: shuttle-gray
+	color: home-text-color
 
 a
-	color: mountain-meadow
+	color: primary-color
+	text-decoration: none
 	cursor: pointer
 	&:hover 
 		text-decoration: underline
@@ -64,10 +77,11 @@ a
     $HOME
 \*------------------------------------*/
 
-.home-wrapper
+.section-wrapper--home
 	width: 100%;
 	height: 100%;
-	background-color: outer-space
+	color: home-text-color
+	background-color: home-bg-color
 
 .form-wrapper
 	position: absolute
@@ -75,160 +89,166 @@ a
 	left: 50%
 	margin-left: -125px
 	width: 250px
-	color: shuttle-gray
 	text-align: center
 	.logo
 		width: 100%
 		height: 105px
-	.form__control
-		margin-top: 10px
-		input[type="text"], input[type="password"]
-			width: 230px
-			color: gallery
-			background-color: bright-gray
-	#submit-button
-		width: 250px
+	.form
+		.form__control
+			position: relative
+			margin-top: 10px
+			input[type="text"], input[type="password"]
+				width: 230px
+				padding: 15px 10px
+				color: home-field-text-color
+				background-color: home-field-bg-color
 
 	#login-form, #signup-form
 		display: none
 
+	.button
+		display: block
+		position: relative
+		width: 250px
+		padding: 15px 0
+		color: white
+		text-transform: uppercase
+		border: 0
+		border-radius: 3px
+		&:hover
+			text-decoration: none
+		&:active
+			padding: 18px 0 12px
+			box-shadow: inset 0 3px 5px rgba(0,0,0,.5)
+
+	#submit-button
+		background-color: primary-color
+
+	a.login-fb-button
+		height: 17px
+		line-height: 47px
+		font-size: 0.857142em
+		background-color: #4c66a4
+		.fb-icon
+			position: absolute
+			top: 0
+			bottom: 0
+			left: 0
+			width: 47px
+			font-size: 1.5em
+			background-color: rgba(0,0,0,.15)
+		.fb-text
+			position: absolute
+			top: 0
+			right: 0
+			bottom: 0
+			left: 47px
+		&:active > *
+			padding-top: 3px
+
 	.error-dialog-box
 		position: absolute
-		top: 2px
+		top: 0
 		right: -215px
-		color: #d12424
+		color: alert-color
 		font-size: 0.857142em
 		dialog-box(170px,auto,#fff,13px)
 
-	.login-fb
-		margin-top: 20px
-		a.login-fb-button
-			display: block
-			width: 75px
-			height: 75px
-			line-height: 75px
-			margin: 20px auto 0
-			font-size: 35px
-			color: white
-			background-color: #4c66a4
-			border-radius: 50%
-
 /*------------------------------------*\
-    $401
+    $HEADER_BAR
 \*------------------------------------*/
 
-.gandalf
-	position: absolute
-	top: 50%
-	left: 50%
-	margin-top: -75px
-	margin-left: -75px
-	width: 150px
-	color: scorpion
-	.gandalf__avatar
-		margin: 0 auto
-		background-image: url('/images/gandalf_avt.jpg')
-	.gandalf__quote
-		margin: 12px 0 2px
-		text-align: center
-	.gandalf__author
-		text-align: right
-		font-size: 0.857142em
-
-/*------------------------------------*\
-    $SIDEBAR
-\*------------------------------------*/
-
-.sidebar
-	position: absolute
-	top: 0
-	bottom: 0
-	left: 0
-	width: 140px
-	background-color: outer-space
+.top-header
+	height: 70px
+	line-height: 70px
+	padding: 0 20px
 	.logo-small
-		position: absolute
-		top: 50%
-		left: 20px
-		margin-top: -50px
-		bg-sprite('/images/logo_small.png',100px,100px,0,0)
-	.user-wrapper
-		position: absolute
-		bottom: 0
-		width: 100px
-		padding: 20px
-		color: #5a5656
-		text-align: right
-		.user__avatar
-			margin: 20px 25px
-		.user__account, .user__chat, .user__notification, .user__setting, .user__logout
-			padding-top: 4px
+		display: inline-block
+		vertical-align: middle
+		bg-sprite('/images/logo_small.png',80px,33px,0,0)
+	ul.user-wrapper
+		float: right
+		height: 100%
+		margin: 0
+		padding: 0
+		list-style: none
+		li
+			float: left
+			height: 100%
+			padding: 0 0px 0 20px
+			.avatar
+				margin: 10px 0
 			a
-				color: gray
-				text-decoration: none
-			.fa
-				width: 22px
-				text-align: center
-			&.selected
-				position: relative
-				&:after
-					content: ""
-					position: absolute
-					border-top: solid 10px transparent
-					border-right: solid 10px #f3f0f0
-					border-bottom: solid 10px transparent
-					border-left: solid 10px transparent
-					right: -20px
-					bottom: 0
+				color: site-text-color
 
 /*------------------------------------*\
-    $USER_CONTENT
+    $PROFILE
+\*------------------------------------*/
+
+/*------------------------------------*\
+    $CHAT
 \*------------------------------------*/
 
 .user-content
-	margin-left: 140px
-	.user-content__title
-		margin: 0 10px
-		padding: 10px 0
-		border-bottom: solid thin #e0e0e0
-		.form__control
-			display: inline-block
-			vertical-align: middle
-			margin: 0 10px 0 0
-			input[type="text"], input[type="password"]
-				width: 230px
-				color: scorpion
-				background-color: mercury
-	.user-content__detail
-		padding: 0 10px
+	color: site-text-color
 
-.group
-	position: relative
-	float: left
-	width: 190px
-	height: 140px
-	margin: 12px 12px 0 0
-	padding: 5px
+sidebar-width = 200px
+	
+.groups-list
+	position: absolute
+	top: 80px
+	bottom: 20px
+	left: 20px
+	width: sidebar-width
 	background-color: white
 	border-radius: 3px
 	box-shadow: 0 4px 0 rgba(0,0,0,.10)
+	.form
+		padding: 10px
+		.form__control
+			float: left
+			input[type="text"]
+				width: sidebar-width - (10*3) - (8*2) - 33
+				padding: 8px
+				color: site-field-text-color
+				background-color: site-field-bg-color
+			.button
+				display: block
+				position: relative
+				width: 33px
+				height: 33px
+				margin-left: 10px
+				padding: 0
+				color: white
+				background-color: primary-color
+				border: 0
+				border-radius: 3px
+				outline: none
+				.fa
+					position: absolute
+					top: 0
+					right: 0
+					bottom: 0
+					left: 0
+					line-height: 33px
+				&:active
+					box-shadow: inset 0 3px 5px rgba(0,0,0,.5)
+				&:active > .fa
+					padding-top: 3px
+
+.group
+	padding: 0 10px 10px
 	.group__name
-		a
-			font-size: 1.5em
-			font-weight: 700
-			color: scorpion
-			text-decoration: none
+		font-weight: 700
 	.group__list
-		position: absolute
-		left: 0
-		bottom: 0
 		.member
 			float: left
+			margin: 5px 5px 0 0
 			padding: 3px 5px
-			color: white
-			border-radius: 3px
-			margin: 0 0 5px 5px
 			font-size: 0.857142em
+			font-weight: 700
+			color: rgba(255,255,255,.5)
+			border-radius: 3px
 			&.a, &.m, &.y
 				background-color: #ec4b43
 			&.b, &.n, &.z
@@ -254,31 +274,52 @@ a
 			&.l, &.x
 				background-color: #811b28
 
+.chat-windows-container
+	position: absolute
+	top: 80px
+	right: 20px
+	bottom: 20px
+	left: 240px
+	.chat-window
+		position: absolute
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		background-color: white
+		border-radius: 3px
+		box-shadow: 0 4px 0 rgba(0,0,0,.10)
+
+/*------------------------------------*\
+    $401
+\*------------------------------------*/
+
+.gandalf
+	position: absolute
+	top: 50%
+	left: 50%
+	margin-top: -75px
+	margin-left: -75px
+	width: 150px
+	color: site-text-color
+	.gandalf__avatar
+		margin: 0 auto
+		background-image: url('/images/gandalf_avt.jpg')
+	.gandalf__quote
+		margin: 12px 0 2px
+		text-align: center
+	.gandalf__author
+		text-align: right
+		font-size: 0.857142em
 
 /*------------------------------------*\
     $COMPONENTS
 \*------------------------------------*/
 
-.form
-	.form__control
-		position: relative
-		input[type="text"], input[type="password"]
-			padding: 15px 10px
-			border: 0
-			border-radius: 3px
+//split button as a component
 
-.button
-	display: inline-block
-	position: relative
-	padding: 15px 15px
-	color: white
-	text-transform: uppercase
-	background-color: #1ead75
-	border: 0
-	border-radius: 3px
-	&:active
-		padding: 18px 15px 12px
-		box-shadow: inset 0 3px 5px rgba(0,0,0,.5)
+.clear
+	clear: both
 
 .avatar
 	width: 100px

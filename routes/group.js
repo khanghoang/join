@@ -1,6 +1,6 @@
 exports.show = function(req, res){
 	res.app.db.models.Group.findOne({_id: req.params.group_id}, function(err, group){
-		res.render('group', {user: req.user, group: group});
+		res.send({user: req.user, group: group});
 	});
 };
 
@@ -21,7 +21,7 @@ exports.post = function(req, res){
 				if (err)
 					res.send(err);
 				else
-					res.redirect('/users/' + user.username);
+					res.redirect('/users/' + user.username + '/chat');
 			});
 		});
 	});

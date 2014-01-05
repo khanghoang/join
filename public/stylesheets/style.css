@@ -2,27 +2,36 @@
 \*------------------------------------*/
 /**
  * CONTENTS............You’re reading it!
- * SITE................Set defaults
+ * DEFAULTS............Set defaults
  * HOME................Styles for login/signup forms
+ * HEADER_BAR..........
+ * PROFILE.............
+ * CHAT................
+ * SETTING.............
  * 401.................Unauthorized page
  * 404.................File not found page
- * SIDEBAR
+ * COMPONENTS..........
  */
-/*------------------------------------*     $SITE
+/*------------------------------------*     $DEFAULTS
 \*------------------------------------*/
 html,
 body {
   height: 100%;
 }
 body {
-  margin: 0;
   font: 300 14px 'Open Sans', sans-serif;
-  background-color: #f3f0f0;
+  background-color: #f4f4f4;
 }
 input {
-  outline: none;
+  margin: 0;
+  padding: 0;
   font-family: 'Open Sans', sans-serif;
   font-size: 0.857142em;
+  outline: none;
+  border: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
 }
 ::-webkit-input-placeholder /* WebKit browsers */ {
   color: #606468;
@@ -38,6 +47,7 @@ input {
 }
 a {
   color: #1ead75;
+  text-decoration: none;
   cursor: pointer;
 }
 a:hover {
@@ -49,9 +59,10 @@ a:hover {
 }
 /*------------------------------------*     $HOME
 \*------------------------------------*/
-.home-wrapper {
+.section-wrapper--home {
   width: 100%;
   height: 100%;
+  color: #606468;
   background-color: #2c3338;
 }
 .form-wrapper {
@@ -60,34 +71,79 @@ a:hover {
   left: 50%;
   margin-left: -125px;
   width: 250px;
-  color: #606468;
   text-align: center;
 }
 .form-wrapper .logo {
   width: 100%;
   height: 105px;
 }
-.form-wrapper .form__control {
+.form-wrapper .form .form__control {
+  position: relative;
   margin-top: 10px;
 }
-.form-wrapper .form__control input[type="text"],
-.form-wrapper .form__control input[type="password"] {
+.form-wrapper .form .form__control input[type="text"],
+.form-wrapper .form .form__control input[type="password"] {
   width: 230px;
+  padding: 15px 10px;
   color: #eee;
   background-color: #3b4148;
-}
-.form-wrapper #submit-button {
-  width: 250px;
 }
 .form-wrapper #login-form,
 .form-wrapper #signup-form {
   display: none;
 }
+.form-wrapper .button {
+  display: block;
+  position: relative;
+  width: 250px;
+  padding: 15px 0;
+  color: #fff;
+  text-transform: uppercase;
+  border: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.form-wrapper .button:hover {
+  text-decoration: none;
+}
+.form-wrapper .button:active {
+  padding: 18px 0 12px;
+  box-shadow: inset 0 3px 5px rgba(0,0,0,0.5);
+}
+.form-wrapper #submit-button {
+  background-color: #1ead75;
+}
+.form-wrapper a.login-fb-button {
+  height: 17px;
+  line-height: 47px;
+  font-size: 0.857142em;
+  background-color: #4c66a4;
+}
+.form-wrapper a.login-fb-button .fb-icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 47px;
+  font-size: 1.5em;
+  background-color: rgba(0,0,0,0.15);
+}
+.form-wrapper a.login-fb-button .fb-text {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 47px;
+}
+.form-wrapper a.login-fb-button:active > * {
+  padding-top: 3px;
+}
 .form-wrapper .error-dialog-box {
   position: absolute;
-  top: 2px;
+  top: 0;
   right: -215px;
-  color: #d12424;
+  color: #c50f13;
   font-size: 0.857142em;
   position: absolute;
   width: 170px;
@@ -108,177 +164,115 @@ a:hover {
   border-bottom: solid 10px transparent;
   border-left: solid 10px transparent;
 }
-.form-wrapper .login-fb {
-  margin-top: 20px;
-}
-.form-wrapper .login-fb a.login-fb-button {
-  display: block;
-  width: 75px;
-  height: 75px;
-  line-height: 75px;
-  margin: 20px auto 0;
-  font-size: 35px;
-  color: #fff;
-  background-color: #4c66a4;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-}
-/*------------------------------------*     $401
+/*------------------------------------*     $HEADER_BAR
 \*------------------------------------*/
-.gandalf {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -75px;
-  margin-left: -75px;
-  width: 150px;
-  color: #5a5656;
+.top-header {
+  height: 70px;
+  line-height: 70px;
+  padding: 0 20px;
 }
-.gandalf .gandalf__avatar {
-  margin: 0 auto;
-  background-image: url("/images/gandalf_avt.jpg");
-}
-.gandalf .gandalf__quote {
-  margin: 12px 0 2px;
-  text-align: center;
-}
-.gandalf .gandalf__author {
-  text-align: right;
-  font-size: 0.857142em;
-}
-/*------------------------------------*     $SIDEBAR
-\*------------------------------------*/
-.sidebar {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 140px;
-  background-color: #2c3338;
-}
-.sidebar .logo-small {
-  position: absolute;
-  top: 50%;
-  left: 20px;
-  margin-top: -50px;
-  background-image: url("/images/logo_small.png");
-  width: 100px;
-  height: 100px;
-  background-position: 0 0;
-}
-.sidebar .user-wrapper {
-  position: absolute;
-  bottom: 0;
-  width: 100px;
-  padding: 20px;
-  color: #5a5656;
-  text-align: right;
-}
-.sidebar .user-wrapper .user__avatar {
-  margin: 20px 25px;
-}
-.sidebar .user-wrapper .user__account,
-.sidebar .user-wrapper .user__chat,
-.sidebar .user-wrapper .user__notification,
-.sidebar .user-wrapper .user__setting,
-.sidebar .user-wrapper .user__logout {
-  padding-top: 4px;
-}
-.sidebar .user-wrapper .user__account a,
-.sidebar .user-wrapper .user__chat a,
-.sidebar .user-wrapper .user__notification a,
-.sidebar .user-wrapper .user__setting a,
-.sidebar .user-wrapper .user__logout a {
-  color: #808080;
-  text-decoration: none;
-}
-.sidebar .user-wrapper .user__account .fa,
-.sidebar .user-wrapper .user__chat .fa,
-.sidebar .user-wrapper .user__notification .fa,
-.sidebar .user-wrapper .user__setting .fa,
-.sidebar .user-wrapper .user__logout .fa {
-  width: 22px;
-  text-align: center;
-}
-.sidebar .user-wrapper .user__account.selected,
-.sidebar .user-wrapper .user__chat.selected,
-.sidebar .user-wrapper .user__notification.selected,
-.sidebar .user-wrapper .user__setting.selected,
-.sidebar .user-wrapper .user__logout.selected {
-  position: relative;
-}
-.sidebar .user-wrapper .user__account.selected:after,
-.sidebar .user-wrapper .user__chat.selected:after,
-.sidebar .user-wrapper .user__notification.selected:after,
-.sidebar .user-wrapper .user__setting.selected:after,
-.sidebar .user-wrapper .user__logout.selected:after {
-  content: "";
-  position: absolute;
-  border-top: solid 10px transparent;
-  border-right: solid 10px #f3f0f0;
-  border-bottom: solid 10px transparent;
-  border-left: solid 10px transparent;
-  right: -20px;
-  bottom: 0;
-}
-/*------------------------------------*     $USER_CONTENT
-\*------------------------------------*/
-.user-content {
-  margin-left: 140px;
-}
-.user-content .user-content__title {
-  margin: 0 10px;
-  padding: 10px 0;
-  border-bottom: solid thin #e0e0e0;
-}
-.user-content .user-content__title .form__control {
+.top-header .logo-small {
   display: inline-block;
   vertical-align: middle;
-  margin: 0 10px 0 0;
+  background-image: url("/images/logo_small.png");
+  width: 80px;
+  height: 33px;
+  background-position: 0 0;
 }
-.user-content .user-content__title .form__control input[type="text"],
-.user-content .user-content__title .form__control input[type="password"] {
-  width: 230px;
-  color: #5a5656;
-  background-color: #e5e5e5;
+.top-header ul.user-wrapper {
+  float: right;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-.user-content .user-content__detail {
-  padding: 0 10px;
-}
-.group {
-  position: relative;
+.top-header ul.user-wrapper li {
   float: left;
-  width: 190px;
-  height: 140px;
-  margin: 12px 12px 0 0;
-  padding: 5px;
+  height: 100%;
+  padding: 0 0px 0 20px;
+}
+.top-header ul.user-wrapper li .avatar {
+  margin: 10px 0;
+}
+.top-header ul.user-wrapper li a {
+  color: #5a5656;
+}
+/*------------------------------------*     $PROFILE
+\*------------------------------------*/
+/*------------------------------------*     $CHAT
+\*------------------------------------*/
+.user-content {
+  color: #5a5656;
+}
+.groups-list {
+  position: absolute;
+  top: 80px;
+  bottom: 20px;
+  left: 20px;
+  width: 200px;
   background-color: #fff;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
   box-shadow: 0 4px 0 rgba(0,0,0,0.1);
 }
-.group .group__name a {
-  font-size: 1.5em;
-  font-weight: 700;
-  color: #5a5656;
-  text-decoration: none;
+.groups-list .form {
+  padding: 10px;
 }
-.group .group__list {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-}
-.group .group__list .member {
+.groups-list .form .form__control {
   float: left;
-  padding: 3px 5px;
+}
+.groups-list .form .form__control input[type="text"] {
+  width: 121px;
+  padding: 8px;
+  color: #5a5656;
+  background-color: #e5e5e5;
+}
+.groups-list .form .form__control .button {
+  display: block;
+  position: relative;
+  width: 33px;
+  height: 33px;
+  margin-left: 10px;
+  padding: 0;
   color: #fff;
+  background-color: #1ead75;
+  border: 0;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  margin: 0 0 5px 5px;
+  outline: none;
+}
+.groups-list .form .form__control .button .fa {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  line-height: 33px;
+}
+.groups-list .form .form__control .button:active {
+  box-shadow: inset 0 3px 5px rgba(0,0,0,0.5);
+}
+.groups-list .form .form__control .button:active > .fa {
+  padding-top: 3px;
+}
+.group {
+  padding: 0 10px 10px;
+}
+.group .group__name {
+  font-weight: 700;
+}
+.group .group__list .member {
+  float: left;
+  margin: 5px 5px 0 0;
+  padding: 3px 5px;
   font-size: 0.857142em;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
 }
 .group .group__list .member.a,
 .group .group__list .member.m,
@@ -330,34 +324,52 @@ a:hover {
 .group .group__list .member.x {
   background-color: #811b28;
 }
+.chat-windows-container {
+  position: absolute;
+  top: 80px;
+  right: 20px;
+  bottom: 20px;
+  left: 240px;
+}
+.chat-windows-container .chat-window {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+}
+/*------------------------------------*     $401
+\*------------------------------------*/
+.gandalf {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -75px;
+  margin-left: -75px;
+  width: 150px;
+  color: #5a5656;
+}
+.gandalf .gandalf__avatar {
+  margin: 0 auto;
+  background-image: url("/images/gandalf_avt.jpg");
+}
+.gandalf .gandalf__quote {
+  margin: 12px 0 2px;
+  text-align: center;
+}
+.gandalf .gandalf__author {
+  text-align: right;
+  font-size: 0.857142em;
+}
 /*------------------------------------*     $COMPONENTS
 \*------------------------------------*/
-.form .form__control {
-  position: relative;
-}
-.form .form__control input[type="text"],
-.form .form__control input[type="password"] {
-  padding: 15px 10px;
-  border: 0;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-}
-.button {
-  display: inline-block;
-  position: relative;
-  padding: 15px 15px;
-  color: #fff;
-  text-transform: uppercase;
-  background-color: #1ead75;
-  border: 0;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-}
-.button:active {
-  padding: 18px 15px 12px;
-  box-shadow: inset 0 3px 5px rgba(0,0,0,0.5);
+.clear {
+  clear: both;
 }
 .avatar {
   width: 100px;

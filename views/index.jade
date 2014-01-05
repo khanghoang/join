@@ -1,7 +1,7 @@
 extends layout
 
 block content
-	div.home-wrapper
+	div.section-wrapper--home
 		div.form-wrapper
 			div.logo
 				img(src="images/logo.png")
@@ -19,10 +19,13 @@ block content
 				div.form__control
 					| you don't have an account? 
 					a#switch-signup-link Sign up
-				div.form__control.login-fb
-					| OR login with
-					a.login-fb-button(href="/auth/facebook")
-						i.fa.fa-facebook
+				div.form__control OR
+				div.form__control
+					a.login-fb-button.button(href="/auth/facebook")
+						div.fb-icon
+							i.fa.fa-facebook
+						div.fb-text
+							| Login with facebook
 
 			form(id="signup-form", class="form", method="POST", action="/users", autocomplete="off")
 				div.form__control
@@ -34,6 +37,9 @@ block content
 							= usernameErr
 					input(name="username", type="text", placeholder="Username")
 				div.form__control
+					if fullnameErr != ""
+						div.error-dialog-box.show
+							= fullnameErr
 					input(name="fullname", type="text", placeholder="Fullname")
 				div.form__control
 					if passwordErr != ""
@@ -47,5 +53,7 @@ block content
 					input(name="confirm_password", type="password", placeholder="Confirm password")
 				div.form__control
 					input(class="button", id="submit-button", type="submit", value="Sign up")
+
+	//- div.section-wrapper--intro
 
 	script(src='javascripts/home.js')
