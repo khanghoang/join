@@ -19,7 +19,7 @@ if [ -f join-master.zip ]; then
     mv join-news join
 
     # install the bcrypt-nodejs for node js
-    cd join && npm install bcrypt-nodejs
+    cd join && npm install bcrypt-nodejs    
 
     #remove the old one
     cd node_modules && rm -rf bcrypt
@@ -30,11 +30,11 @@ if [ -f join-master.zip ]; then
     #back and start server again
     cd .. && node app.js
 
-    #stop all hook.js
-    forever stopall
-
     #restart
     forever start hook.js
+
+    #stop all hook.js
+    forever stopall
 
     # Perhaps call any other scripts you need to rebuild assets here
     # or set owner/permissions
