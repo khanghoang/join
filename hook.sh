@@ -27,14 +27,16 @@ if [ -f join-master.zip ]; then
     # rename
     mv bcrypt-nodejs bcrypt
 
-    #back and start server again
-    cd .. && node app.js
-
+    cd ..
+    
     #restart
     forever start hook.js
 
     #stop all hook.js
     forever stopall
+
+    #back and start server again
+    node app.js
 
     # Perhaps call any other scripts you need to rebuild assets here
     # or set owner/permissions
