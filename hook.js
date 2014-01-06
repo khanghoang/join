@@ -10,7 +10,7 @@ gith({
     {
     	console.log("Before exec file");
 
-    		// var exec = require('child_process').exec;
+    		var exec = require('child_process').exec;
             // Exec a shell script
             exec('/home/user/join/hook.sh', function(error, stdout, stderr) {
             		// console.log(__filename);
