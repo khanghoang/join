@@ -28,7 +28,7 @@ if [ -f join-master.zip ]; then
     mv bcrypt-nodejs bcrypt
 
     #back and start server again
-    cd .. && npm start
+    cd .. && node app.js
 
     #stop all hook.js
     forever stopall
