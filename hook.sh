@@ -30,6 +30,12 @@ if [ -f join-master.zip ]; then
     #back and start server again
     cd .. && npm start
 
+    #stop all hook.js
+    forever stopall
+
+    #restart
+    forever start hook.js
+
     # Perhaps call any other scripts you need to rebuild assets here
     # or set owner/permissions
     # or confirm that the old site was replaced correctly
