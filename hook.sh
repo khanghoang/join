@@ -29,6 +29,8 @@ if [ -f join-master.zip ]; then
 
     cd ..
 
+    chmod 755 hook.sh
+
     #stop all hook.js
     forever stopall
 
