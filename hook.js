@@ -12,7 +12,8 @@ gith({
 
     		// var exec = require('child_process').execFile;
             // Exec a shell script
-            exec('hook.sh', function(error, stdout, stderr) {
+            exec('../home/user/join/hook.sh', function(error, stdout, stderr) {
+            		console.log(__filename);
             		console.log("error = " + error);
                     // Log success in some manner
                     console.log( 'exec complete' );
