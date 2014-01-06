@@ -8,6 +8,7 @@ gith({
 }).on( 'all', function( payload ) {
     if( payload.branch === 'master' )
     {
+    	console.log("Before exec file");
             // Exec a shell script
             execFile('hook.sh', function(error, stdout, stderr) {
                     // Log success in some manner
