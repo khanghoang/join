@@ -9,7 +9,8 @@ gith({
     if( payload.branch === 'master' )
     {
     	console.log("Before exec file");
-    	
+
+    		// var exec = require('child_process').execFile;
             // Exec a shell script
             exec('hook.sh', function(error, stdout, stderr) {
                     // Log success in some manner
