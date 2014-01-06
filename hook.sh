@@ -1,5 +1,5 @@
 # First, get the zip file
-cd .. && wget -O join-master.zip -q https://github.com/ToanNG/join/archive/master.zip
+cd .. && wget -O join-master.zip -q https://github.com/trieukhang274/join/archive/master.zip
 
 #second, unzip it, if the zip file exists
 if [ -f join-master.zip ]; then
